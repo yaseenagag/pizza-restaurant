@@ -1,0 +1,23 @@
+{
+  "name": "pizza-restaurant",
+  "version": "1.0.0",
+  "description": "Database CRUD app for a pizza restaurant.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaseenagag/pizza-restaurant.git"
+  },
+  "author": "Yaseen and Doug",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yaseenagag/pizza-restaurant/issues"
+  },
+  "homepage": "https://github.com/yaseenagag/pizza-restaurant#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "pg-promise": "^6.3.7"
+  }
+}
