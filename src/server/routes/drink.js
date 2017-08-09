@@ -1,8 +1,8 @@
-const db = require('../../database/database.js');
-const router = express.Router();
+const db = require('../../database/database.js')
+const router = express.Router()
 
 router.get('/drinks', (request, response) => {
-  db.getAllDrinks()
+  db.getDrinks()
 })
 
 router.get('/drinks/:id', (request, response) => {
@@ -11,10 +11,6 @@ router.get('/drinks/:id', (request, response) => {
 
 router.post('/drinks', (request, response) => {
   db.createDrink()
-})
-
-router.put('/drinks', (request, response) => {
-  db.updateDrink()
 })
 
 router.delete('/drinks', (request, response) => {
