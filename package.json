@@ -4,7 +4,9 @@
   "description": "Database CRUD app for a pizza restaurant.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./src/",
+    "db:create": "createdb pizza && psql pizza < src/database/schema/schema.sql && psql pizza < src/database/schema/load-data.sql",
+    "db:drop": "dropdb pizza"
   },
   "repository": {
     "type": "git",
