@@ -1,22 +1,18 @@
-const db = require('../../database/database.js');
+const dbCustomer = require('../../database/customer.js');
 const router = express.Router();
 
 router.get('/customers', (request, response) => {
-  db.getAllCustomers()
-})
+  dbCustomer.getAllCustomers();
+});
 
 router.get('/customers/:id', (request, response) => {
-  db.getCustomer()
-})
+  dbCustomer.getCustomer();
+});
 
 router.post('/customers', (request, response) => {
-  db.createCustomer()
-})
-
-router.put('/customers', (request, response) => {
-  db.updateCustomer()
-})
+  dbCustomer.createCustomer();
+});
 
 router.delete('/customers', (request, response) => {
-  db.deleteCustomer()
-})
+  dbCustomer.deleteCustomer();
+});
