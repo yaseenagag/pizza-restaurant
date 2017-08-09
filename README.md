@@ -1,15 +1,3 @@
-## Challenge Rubric
-
-This goal will likely be within your ZPD if you...
-
-- Can set up a relational database
-- Can write basic SQL queries
-- Can build web apps with basic CRUD functionality
-- Are familiar with relational schema design
-- Are familiar with RESTful API design
-- Are interested in learning CRUD (Create, Read, Update, Delete) relational database interactions
-- Are interested in translating product specs into a web API to satisfy them
-
 ## Description
 
 Piccadilly Pizza is a diamond in the rough: their deep dish is the bomb dot com, but they're just breaking even because they lack the easy-to-use online ordering interface that will give them a competitive edge.
