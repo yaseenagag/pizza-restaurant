@@ -1,32 +1,31 @@
-const db = require('../database.js');
+const db = require('./database.js');
 
 const createDrink = function(drink){
   return db.query(`
     INSERT INTO
-      drink (name, username, address, phone_number, payment)
+      drink (description, manufacturer, supplier, price)
     VALUES
-      ($1::text, $2::text, $3::text, $4::text, $5::text)
+      ($1::text, $2::text, $3::text, $4::money)
     `,
     [
-      drink.name,
-      drink.username,
-      drink.address,
-      drink.phone_number,
-      drink.payment
+      drink.description,
+      drink.manufacturer,
+      drink.supplier,
+      drink.price
     ])
     .catch(error => {console.log('There is an error with a query'); throw error;});
 }
 
 const getDrinks = function(){
   return db.many(`
-    SELECT * FROM drinks
+    SELECT * FROM drink
     `, [])
     .catch(error => {console.log('There is an error with a query'); throw error;});
 }
 
 const getDrink = function(drinkID){
   return db.one(`
-    SELECT * FROM drinks WHERE id = $1::int
+    SELECT * FROM drink WHERE id = $1::int
     `,
     [drinkID])
   .catch(error => {console.log('There is an error with a query'); throw error;});
@@ -37,16 +36,15 @@ const updateDrink = function(drink, drinkID){
     UPDATE
       drink
     SET
-      name = $1::text, username = $2::text, address = $3::text, phone_number = $4::text, payment = $5::text
+      description = $1::text, manufacturer = $2::text, supplier = $3::text, price = $4::money
     WHERE
-     id = $6
+     id = $5
     `,
     [
-      drink.name,
-      drink.username,
-      drink.address,
-      drink.phone_number,
-      drink.payment,
+      drink.description,
+      drink.manufacturer,
+      drink.supplier,
+      drink.price,
       drinkID
     ])
     .catch(error => {console.log('There is an error with a query'); throw error;});
@@ -54,7 +52,7 @@ const updateDrink = function(drink, drinkID){
 
 const deleteDrink = function(drinkID){
   return db.query(`
-    DELETE FROM drinks WHERE id = $1::int
+    DELETE FROM drink WHERE id = $1::int
     `,
     [drinkID])
   .catch(error => {console.log('There is an error with a query'); throw error;});

@@ -1,5 +1,5 @@
 const renderError = function(error, response) {
-  response.send(`ERROR: $(error.message)`)
+  response.send(`ERROR: ${error.message}`)
 }
 
 module.exports = renderError;

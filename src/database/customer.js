@@ -1,4 +1,4 @@
-const db = require('../database.js');
+const db = require('./database.js');
 
 const createCustomer = function(customer){
   return db.query(`
@@ -18,15 +18,15 @@ const createCustomer = function(customer){
 }
 
 const getCustomers = function(){
-  return db.many(`
-    SELECT * FROM customers
+  return db.query(`
+    SELECT * FROM customer
     `, [])
     .catch(error => {console.log('There is an error with a query'); throw error;});
 }
 
 const getCustomer = function(customerID){
-  return db.one(`
-    SELECT * FROM customers WHERE id = $1::int
+  return db.query(`
+    SELECT * FROM customer WHERE id = $1::int
     `,
     [customerID])
   .catch(error => {console.log('There is an error with a query'); throw error;});
@@ -54,7 +54,7 @@ const updateCustomer = function(customer, customerID){
 
 const deleteCustomer = function(customerID){
   return db.query(`
-    DELETE FROM customers WHERE id = $1::int
+    DELETE FROM customer WHERE id = $1::int
     `,
     [customerID])
   .catch(error => {console.log('There is an error with a query'); throw error;});

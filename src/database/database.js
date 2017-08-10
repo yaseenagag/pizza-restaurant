@@ -1,5 +1,5 @@
-const pgp = require('pg-promise');
-const connectionString = "postgres://localhost:5432/pizza";
+const pgp = require('pg-promise')();
+const connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/pizza";
 const db = pgp(connectionString);
 
-module.export = db;
+module.exports = db;
