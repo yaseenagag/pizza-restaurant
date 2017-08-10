@@ -13,11 +13,11 @@ const getCustomer = function(customerID) {
 }
 
 const updateCustomer = function(customer, customerID) {
-  return updateCustomer(customer, customerID);
+  return db.updateCustomer(customer, customerID);
 }
 
 const deleteCustomer = function(customerID) {
-  return deleteCustomer(customerID);
+  return db.deleteCustomer(customerID);
 }
 
 module.exports = {

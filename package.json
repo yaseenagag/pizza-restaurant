@@ -4,9 +4,10 @@
   "description": "Database CRUD app for a pizza restaurant.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/server.js",
     "db:create": "createdb pizza && psql pizza < src/database/schema/schema.sql && psql pizza < src/database/schema/load-data.sql",
-    "db:drop": "dropdb pizza"
+    "db:drop": "dropdb pizza",
+    "db:load": "psql pizza < src/database/schema/schema.sql && psql pizza < src/database/schema/load-data.sql",
+    "start": "nodemon ./src/server.js"
   },
   "repository": {
     "type": "git",

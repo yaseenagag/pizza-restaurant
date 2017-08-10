@@ -6,6 +6,8 @@ const createDrink = function(drink){
       drink (description, manufacturer, supplier, price)
     VALUES
       ($1::text, $2::text, $3::text, $4::money)
+    RETURNING
+      *
     `,
     [
       drink.description,

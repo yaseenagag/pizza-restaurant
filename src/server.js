@@ -9,6 +9,7 @@ const dbPizza = require('./models/pizza.js');
 const {renderError} = require('./server/utils.js')
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.use('/', routes);
 

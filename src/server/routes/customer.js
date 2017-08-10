@@ -31,19 +31,21 @@ router.get('/:customerid', (request, response, next) => {
   .catch( error => renderError(error, response));
 });
 
-router.patch('/', (request, response, next) => {
-  dbCustomer.updateCustomer(request.body)
+router.patch('/:customerid', (request, response, next) => {
+  const customerID = request.params.customerid;
+  dbCustomer.updateCustomer(request.body, customerID)
   .then(function(customer) {
-    if (customer) return response.redirect(`/customers/${customer[0].id}`);
+    if (customer) return response.redirect(`/customers/${customerID}`);
     next();
   })
   .catch( error => renderError(error, response));
 });
 
-router.delete('/', (request, response, next) => {
-  dbCustomer.deleteCustomer()
+router.delete('/:customerid', (request, response, next) => {
+  const customerID = request.params.customerid;
+  dbCustomer.deleteCustomer(customerID)
   .then(function(customer) {
-    if (customer) return response.redirect(`/customers`);
+    if (customer) return response.redirect(`/customers/${customerID}`);
     next();
   })
   .catch( error => renderError(error, response));

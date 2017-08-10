@@ -6,6 +6,8 @@ const createPizza = function(pizza){
       pizza (size, crust, price, discount_price)
     VALUES
       ($1::text, $2::text, $3::money, $4::money)
+    RETURNING
+      *
     `,
     [
       pizza.size,
