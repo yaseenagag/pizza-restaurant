@@ -31,19 +31,21 @@ router.get('/:drinkid', (request, response, next) => {
   .catch( error => renderError(error, response));
 });
 
-router.patch('/', (request, response, next) => {
-  dbDrink.updateDrink(request.body)
+router.patch('/:drinkid', (request, response, next) => {
+  const drinkID = request.params.drinkid;
+  dbDrink.updateDrink(request.body, drinkID)
   .then(function(drink) {
-    if (drink) return response.redirect(`/drinks/${drink[0].id}`);
+    if (drink) return response.redirect(`/drinks/${drinkID}`);
     next();
   })
   .catch( error => renderError(error, response));
 });
 
-router.delete('/', (request, response, next) => {
-  dbDrink.deleteDrink()
+router.delete('/:drinkid', (request, response, next) => {
+  const drinkID = request.params.drinkid;
+  dbDrink.deleteDrink(drinkID)
   .then(function(drink) {
-    if (drink) return response.redirect(`/drinks`);
+    if (drink) return response.redirect(`/drinks/${drinkID}`);
     next();
   })
   .catch( error => renderError(error, response));

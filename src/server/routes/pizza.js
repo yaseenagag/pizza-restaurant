@@ -31,19 +31,21 @@ router.get('/:pizzaid', (request, response, next) => {
   .catch( error => renderError(error, response));
 });
 
-router.patch('/', (request, response, next) => {
-  dbPizza.updatePizza(request.body)
+router.patch('/:pizzaid', (request, response, next) => {
+  const pizzaID = request.params.pizzaid;
+  dbPizza.updatePizza(request.body, pizzaID)
   .then(function(pizza) {
-    if (pizza) return response.redirect(`/pizzas/${pizza[0].id}`);
+    if (pizza) return response.redirect(`/pizzas/${pizzaID}`);
     next();
   })
   .catch( error => renderError(error, response));
 });
 
-router.delete('/', (request, response, next) => {
-  dbPizza.deletePizza()
+router.delete('/:pizzaid', (request, response, next) => {
+  const pizzaID = request.params.pizzaid;
+  dbPizza.deletePizza(pizzaID)
   .then(function(pizza) {
-    if (pizza) return response.redirect(`/pizzas`);
+    if (pizza) return response.redirect(`/pizzas/${pizzaID}`);
     next();
   })
   .catch( error => renderError(error, response));

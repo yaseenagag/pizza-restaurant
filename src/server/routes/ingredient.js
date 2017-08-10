@@ -31,19 +31,21 @@ router.get('/:ingredientid', (request, response, next) => {
   .catch( error => renderError(error, response));
 });
 
-router.patch('/', (request, response, next) => {
-  dbIngredient.updateIngredient(request.body)
+router.patch('/:ingredientid', (request, response, next) => {
+  const ingredientID = request.params.ingredientid;
+  dbIngredient.updateIngredient(request.body, ingredientID)
   .then(function(ingredient) {
-    if (ingredient) return response.redirect(`/ingredients/${ingredient[0].id}`);
+    if (ingredient) return response.redirect(`/ingredients/${ingredientID}`);
     next();
   })
   .catch( error => renderError(error, response));
 });
 
-router.delete('/', (request, response, next) => {
-  dbIngredient.deleteIngredient()
+router.delete('/:ingredientid', (request, response, next) => {
+  const ingredientID = request.params.ingredientid;
+  dbIngredient.deleteIngredient(ingredientID)
   .then(function(ingredient) {
-    if (ingredient) return response.redirect(`/ingredients`);
+    if (ingredient) return response.redirect(`/ingredients/${ingredientID}`);
     next();
   })
   .catch( error => renderError(error, response));
