@@ -6,6 +6,8 @@ const createCustomer = function(customer){
       customer (name, username, address, phone_number, payment)
     VALUES
       ($1::text, $2::text, $3::text, $4::text, $5::text)
+    RETURNING
+      *
     `,
     [
       customer.name,

@@ -13,11 +13,11 @@ const getIngredient = function(ingredientID) {
 }
 
 const updateIngredient = function(ingredient, ingredientID) {
-  return updateIngredient(ingredient, ingredientID);
+  return db.updateIngredient(ingredient, ingredientID);
 }
 
 const deleteIngredient = function(ingredientID) {
-  return deleteIngredient(ingredientID);
+  return db.deleteIngredient(ingredientID);
 }
 
 module.exports = {

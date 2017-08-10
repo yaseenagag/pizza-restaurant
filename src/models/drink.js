@@ -13,11 +13,11 @@ const getDrink = function(drinkID) {
 }
 
 const updateDrink = function(drink, drinkID) {
-  return updateDrink(drink, drinkID);
+  return db.updateDrink(drink, drinkID);
 }
 
 const deleteDrink = function(drinkID) {
-  return deleteDrink(drinkID);
+  return db.deleteDrink(drinkID);
 }
 
 module.exports = {

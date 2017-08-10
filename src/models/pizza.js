@@ -13,11 +13,11 @@ const getPizza = function(pizzaID) {
 }
 
 const updatePizza = function(pizza, pizzaID) {
-  return updatePizza(pizza, pizzaID);
+  return db.updatePizza(pizza, pizzaID);
 }
 
 const deletePizza = function(pizzaID) {
-  return deletePizza(pizzaID);
+  return db.deletePizza(pizzaID);
 }
 
 module.exports = {

@@ -6,6 +6,8 @@ const createIngredient = function(ingredient){
       ingredient (name)
     VALUES
       ($1::text)
+    RETURNING
+      *
     `,
     [ingredient.name])
     .catch(error => {console.log('There is an error with a query'); throw error;});
