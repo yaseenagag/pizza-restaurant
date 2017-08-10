@@ -4,7 +4,7 @@
   "description": "Database CRUD app for a pizza restaurant.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/",
+    "start": "nodemon ./src/server.js",
     "db:create": "createdb pizza && psql pizza < src/database/schema/schema.sql && psql pizza < src/database/schema/load-data.sql",
     "db:drop": "dropdb pizza"
   },
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/yaseenagag/pizza-restaurant#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "pg-promise": "^6.3.7"
   }

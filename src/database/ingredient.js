@@ -1,32 +1,26 @@
-const db = require('../database.js');
+const db = require('./database.js');
 
 const createIngredient = function(ingredient){
   return db.query(`
     INSERT INTO
-      ingredient (name, username, address, phone_number, payment)
+      ingredient (name)
     VALUES
-      ($1::text, $2::text, $3::text, $4::text, $5::text)
+      ($1::text)
     `,
-    [
-      ingredient.name,
-      ingredient.username,
-      ingredient.address,
-      ingredient.phone_number,
-      ingredient.payment
-    ])
+    [ingredient.name])
     .catch(error => {console.log('There is an error with a query'); throw error;});
 }
 
 const getIngredients = function(){
   return db.many(`
-    SELECT * FROM ingredients
+    SELECT * FROM ingredient
     `, [])
     .catch(error => {console.log('There is an error with a query'); throw error;});
 }
 
 const getIngredient = function(ingredientID){
   return db.one(`
-    SELECT * FROM ingredients WHERE id = $1::int
+    SELECT * FROM ingredient WHERE id = $1::int
     `,
     [ingredientID]
   )
@@ -38,16 +32,12 @@ const updateIngredient = function(ingredient, ingredientID){
     UPDATE
       ingredient
     SET
-      name = $1::text, username = $2::text, address = $3::text, phone_number = $4::text, payment = $5::text
+      name = $1::text
     WHERE
-     id = $6
+     id = $2
     `,
     [
       ingredient.name,
-      ingredient.username,
-      ingredient.address,
-      ingredient.phone_number,
-      ingredient.payment,
       ingredientID
     ])
     .catch(error => {console.log('There is an error with a query'); throw error;});
@@ -55,7 +45,7 @@ const updateIngredient = function(ingredient, ingredientID){
 
 const deleteIngredient = function(ingredientID){
   return db.query(`
-    DELETE FROM ingredients WHERE id = $1::int
+    DELETE FROM ingredient WHERE id = $1::int
     `,
     [ingredientID]
   )

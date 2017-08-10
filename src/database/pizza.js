@@ -1,41 +1,31 @@
-const db = require('../database.js');
+const db = require('./database.js');
 
 const createPizza = function(pizza){
   return db.query(`
     INSERT INTO
-      pizza (name, username, address, phone_number, payment)
+      pizza (size, crust, price, discount_price)
     VALUES
-      ($1::text, $2::text, $3::text, $4::text, $5::text)
+      ($1::text, $2::text, $3::money, $4::money)
     `,
     [
-      pizza.name,
-      pizza.username,
-      pizza.address,
-      pizza.phone_number,
-      pizza.payment
+      pizza.size,
+      pizza.crust,
+      pizza.price,
+      pizza.discount_price
     ])
     .catch(error => {console.log('There is an error with a query'); throw error;});
 }
 
 const getPizzas = function(){
   return db.many(`
-    SELECT * FROM pizzas
+    SELECT * FROM pizza
     `, [])
     .catch(error => {console.log('There is an error with a query'); throw error;});
 }
 
 const getPizza = function(pizzaID){
   return db.one(`
-    SELECT * FROM pizzas WHERE id = $1::int
-    `,
-    [pizzaID]
-  )
-  .catch(error => {console.log('There is an error with a query'); throw error;});
-}
-
-const deletePizza = function(pizzaID){
-  return db.query(`
-    DELETE FROM pizzas WHERE id = $1::int
+    SELECT * FROM pizza WHERE id = $1::int
     `,
     [pizzaID]
   )
@@ -47,19 +37,27 @@ const updatePizza = function(pizza, pizzaID){
     UPDATE
       pizza
     SET
-      name = $1::text, username = $2::text, address = $3::text, phone_number = $4::text, payment = $5::text
+      size = $1::text, crust = $2::text, price = $3::money, discount_price = $4::money
     WHERE
-     id = $6
+     id = $5
     `,
     [
-      pizza.name,
-      pizza.username,
-      pizza.address,
-      pizza.phone_number,
-      pizza.payment,
+      pizza.size,
+      pizza.crust,
+      pizza.price,
+      pizza.discount_price,
       pizzaID
     ])
     .catch(error => {console.log('There is an error with a query'); throw error;});
+}
+
+const deletePizza = function(pizzaID){
+  return db.query(`
+    DELETE FROM pizza WHERE id = $1::int
+    `,
+    [pizzaID]
+  )
+  .catch(error => {console.log('There is an error with a query'); throw error;});
 }
 
 module.exports = {
