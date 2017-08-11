@@ -19,14 +19,19 @@ const createTransactionList = function(transactionList){
 
 const getTransactionLists = function(){
   return db.many(`
-    SELECT * FROM transaction_list
+    SELECT transaction_list.*, (pizza.price + drink.price) AS othertotal FROM transaction_list
+    JOIN pizza ON pizza.id = transaction_list.pizza_id
+    JOIN drink ON drink.id = transaction_list.drink_id
     `, [])
     .catch(error => {console.log('There is an error with a query'); throw error;});
 }
 
 const getTransactionList = function(transactionListID){
   return db.one(`
-    SELECT * FROM transaction_list WHERE id = $1::int
+    SELECT transaction_list.*, (pizza.price + drink.price) AS total FROM transaction_list
+    JOIN pizza ON pizza.id = transaction_list.pizza_id
+    JOIN drink ON drink.id = transaction_list.drink_id
+    WHERE id = $1::int
     `,
     [transactionListID]
   )
