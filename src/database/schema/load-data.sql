@@ -1,6 +1,6 @@
--- Find out how to store credit card number better
-INSERT INTO customer (name, username, address, phone_number, payment) 
-VALUES 
+-- Customer
+INSERT INTO customer (name, username, address, phone_number, payment)
+VALUES
 ('Tamiko Lorant', 'tlorant0', '22756 Morningstar Lane', '86-(577)779-6289', 'check'),
 ('Timothee Storm', 'tstorm1', '356 Dayton Court', '55-(530)930-3345', 'credit - 0000-0000-0000-0000'),
 ('Tawsha Orans', 'torans2', '44692 Starling Place', '62-(528)665-8550', 'check'),
@@ -8,27 +8,27 @@ VALUES
 ('Alberik Kittoe', 'akittoe4', '8 Delladonna Center', '86-(671)581-9454', 'cash');
 
 -- Pizza
-INSERT INTO pizza (size, crust, price, discount_price) 
+INSERT INTO pizza (size, crust, price, discount_price)
 VALUES
- ('small', 'thin', 1.00, 0.50),
- ('small', 'thick', 1.00, 0.50),
- ('medium', 'thin', 2.00, 1.00),
- ('small', 'thick', 1.00, 0.50),
- ('extra-large', 'thin', 4.00, 2.00),
- ('extra-large', 'thin', 4.00, 2.00),
- ('small', 'thick', 1.00, 0.50),
- ('large', 'thick', 3.00, 1.50),
- ('small', 'thin', 1.00, 0.50),
- ('medium', 'thin', 2.00, 1.00),
- ('small', 'thick', 1.00, 0.50),
- ('large', 'thick', 3.00, 1.50),
- ('small', 'thin', 1.00, 0.50),
- ('extra-large', 'thin', 4.00, 2.00),
- ('extra-large', 'thick', 4.00, 2.00);
+('small', 'thin', 1.00, 0.50),
+('small', 'thick', 1.00, 0.50),
+('medium', 'thin', 2.00, 1.00),
+('small', 'thick', 1.00, 0.50),
+('extra-large', 'thin', 4.00, 2.00),
+('extra-large', 'thin', 4.00, 2.00),
+('small', 'thick', 1.00, 0.50),
+('large', 'thick', 3.00, 1.50),
+('small', 'thin', 1.00, 0.50),
+('medium', 'thin', 2.00, 1.00),
+('small', 'thick', 1.00, 0.50),
+('large', 'thick', 3.00, 1.50),
+('small', 'thin', 1.00, 0.50),
+('extra-large', 'thin', 4.00, 2.00),
+('extra-large', 'thick', 4.00, 2.00);
 
 -- Drinks
-INSERT INTO drink (description, manufacturer, supplier, price) 
-VALUES 
+INSERT INTO drink (description, manufacturer, supplier, price)
+VALUES
 ('Coke', 'Coca-Cola', 'Unilever', 1.72),
 ('Pepsi', 'Pepsi', 'Johnson & Johnson', 3.37),
 ('Sprite', 'Coca-Cola', 'Unilever', 2.25),
@@ -37,8 +37,8 @@ VALUES
 
 -- Ingredients
 
-INSERT INTO ingredient (name) 
-VALUES 
+INSERT INTO ingredient (name)
+VALUES
 ('pepperoni'),
 ('sausage'),
 ('mushrooms'),
@@ -87,3 +87,18 @@ VALUES
 (11,7),
 (11,2),
 (12,3);
+
+-- Transactions
+INSERT INTO transaction (payment_method, delivery_date)
+VALUES
+('cash', '2017-08-10');
+
+-- Transaction List
+INSERT INTO transaction_list (pizza_id, drink_id, transaction_id)
+VALUES
+(1, 2, 1),
+(NULL, 1, 1),
+(2, NULL, 1);
+
+-- Transaction List Totals
+INSERT 
