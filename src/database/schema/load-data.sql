@@ -101,4 +101,3 @@ VALUES
 (2, NULL, 1);
 
 -- Transaction List Totals
-INSERT 
