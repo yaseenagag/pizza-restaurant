@@ -13,7 +13,7 @@ CREATE TABLE customer(
   username VARCHAR(50) NOT NULL,
   address VARCHAR(100) NOT NULL,
   phone_number VARCHAR(100) NOT NULL,
-  payment VARCHAR(100)
+  payment VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE pizza(
