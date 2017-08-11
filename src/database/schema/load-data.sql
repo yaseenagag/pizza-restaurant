@@ -99,5 +99,3 @@ VALUES
 (1, 2, 1),
 (NULL, 1, 1),
 (2, NULL, 1);
-
--- Transaction List Totals
